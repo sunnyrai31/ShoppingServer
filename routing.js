@@ -20,8 +20,12 @@ router.route('/products').get(function(request, response){
     });
 });
 
-router.route('/product/:id').get(function(request, response){
-    response.send('Hi I m product get api with id: '+request.params.id);
+router.route('/product/:name').get(function(request, response){
+    productController.getProductByName(request.params.name).then(function(dto){
+        response.status(dto.statusCode).send(dto);
+    }, function(dto){
+        response.status(dto.statusCode).send(dto);
+    });
 });
 
 module.exports = router;

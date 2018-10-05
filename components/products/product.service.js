@@ -32,7 +32,22 @@ var productService = {
                 deffered.resolve(products);
             } else {
                 console.log(error);
-                deffered.reject(400);
+                deffered.reject(404);
+            }
+        });
+        return deffered.promise;
+    },
+    getProductByName: function (requestData){
+        var deffered = Q.defer();
+        console.log('product service request data',requestData);
+        ProductModel.findOne({'name':requestData},function(error,product){
+            if(!error){
+                console.log('product by Name:',product)
+                deffered.resolve(product);
+            }
+            else{
+                console.log('error');
+                deffered.reject(404);
             }
         });
         return deffered.promise;
