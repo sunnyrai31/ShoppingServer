@@ -17,11 +17,24 @@ var productController = {
             DTO.statusCode = error;
             deffered.reject(DTO);
         });
-
         return deffered.promise;
-
+    },
+    getAllProducts:function(){
+        var deffered = Q.defer();
+        productService.getAllProducts().then(function(successData){
+            console.log('Success data',successData);
+            DTO.message = 'SUCCESS';
+            DTO.data = successData;
+            DTO.statusCode = 200;
+            deffered.resolve(DTO);
+        },function(error){
+            DTO.message = 'FAILED';
+            DTO.data = null;
+            DTO.statusCode = error;
+            deffered.reject(DTO);
+        });
+        return deffered.promise;
     }
-
 }
 
 module.exports = productController;

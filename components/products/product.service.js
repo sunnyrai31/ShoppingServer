@@ -23,6 +23,19 @@ var productService = {
         });
 
         return deffered.promise;
+    },
+    getAllProducts: function(){
+        var deffered = Q.defer();
+        ProductModel.find({},function(error,products){
+            if (!error) {
+                console.log('products:',products);
+                deffered.resolve(products);
+            } else {
+                console.log(error);
+                deffered.reject(400);
+            }
+        });
+        return deffered.promise;
     }
 
 }

@@ -5,7 +5,6 @@ var router = express.Router();
 var productController = require('./components/products/product.controller');
 
 router.route('/product').post(function(request, response){
-    console.log("this is the routing file ", request);
     productController.addProduct(request).then(function(dto){
         response.status(dto.statusCode).send(dto);
     }, function(dto){
@@ -13,12 +12,12 @@ router.route('/product').post(function(request, response){
     });
 });
 
-
-
-router.route('/products/:id/:name').get(function(request, response){
-    console.log(request.params.id);
-    console.log(request.params.name);
-    response.send('Hi I m product get api');
+router.route('/products').get(function(request, response){
+    productController.getAllProducts().then(function(dto){
+        response.status(dto.statusCode).send(dto);
+    }, function(dto){
+        response.status(dto.statusCode).send(dto);
+    });
 });
 
 router.route('/product/:id').get(function(request, response){
@@ -26,5 +25,3 @@ router.route('/product/:id').get(function(request, response){
 });
 
 module.exports = router;
-
-
