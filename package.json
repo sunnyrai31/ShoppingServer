@@ -1,0 +1,25 @@
+{
+  "name": "shoppingserver",
+  "version": "1.0.0",
+  "description": "server side app for a shopping site this is connect to mongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunnyrai31/ShoppingServer.git"
+  },
+  "author": "SunnyRai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunnyrai31/ShoppingServer/issues"
+  },
+  "homepage": "https://github.com/sunnyrai31/ShoppingServer#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.1",
+    "q": "^1.5.1"
+  }
+}
