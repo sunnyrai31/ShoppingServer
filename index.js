@@ -4,16 +4,14 @@ var routes = require('./routing');
 var mongoose = require("mongoose");
 var dbConfig  = require('./config');
 var bodyParser = require('body-parser');
-
 var app = express();
+
+//configuration for body parser
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: false, parameterLimit:50000}));
 
 // configuration for route
 app.use('/sunny_shopping/v1',routes);
-
-//configuration for body parser
-
- app.use(bodyParser.json()); 
- app.use(bodyParser.urlencoded({ extended: true }));
 
 // connection with mongo db
 (function(){
@@ -31,6 +29,10 @@ app.use('/sunny_shopping/v1',routes);
 app.listen(5000,function(){
     console.log('express server running');
 });
+
+
+
+
 
 
 
