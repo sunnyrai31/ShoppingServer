@@ -20,8 +20,20 @@ var userController ={
     getUserDataByID:function(requestData){
 
     },
-    getAllUSers:function(){
-
+    getAllUsers:function(){
+        var deffered =  Q.defer();
+        userService.getAllUsers().then(function(successData){
+            DTO.message = 'SUCCESS';
+            DTO.data = successData;
+            DTO.statusCode = 200;
+            deffered.resolve(DTO);
+        },function(error){
+            DTO.message = 'FAILED';
+            DTO.data = null;
+            DTO.statusCode = error;
+            deffered.reject(DTO);
+        })
+        return deffered.promise;
     }
 
 }

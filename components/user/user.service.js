@@ -20,6 +20,19 @@ var userService = {
                 }
             });
             return deffered.promise;
-        }
+        },
+    getAllUsers: function(){
+        var deffered = Q.defer();
+        userModel.find({},function(error,users){
+            if(!error){
+                console.log('All User Data, :'+users);
+                deffered.resolve(users);
+            }else{
+                console.log('error :'+error);
+                deffered.reject(404);
+            }
+        })
+        return deffered.promise;
+    }
 }
 module.exports = userService;

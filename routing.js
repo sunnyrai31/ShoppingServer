@@ -38,6 +38,14 @@ router.route('/user').post(function (request,response){
     })
     
 })
+//get all user
+router.route('/users').get(function(request,response){
+     userController.getAllUsers().then(function(dto){
+         response.status(dto.statusCode).send(dto);
+     },function(dto){
+        response.status(dto.statusCode).send(dto);
+     })
+})
 
 
 module.exports = router;
