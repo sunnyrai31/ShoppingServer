@@ -17,7 +17,6 @@ var productService = {
             if (!error) {
                 deffered.resolve(201);
             } else {
-                console.log(error);
                 deffered.reject(422);
             }
         });
@@ -28,10 +27,8 @@ var productService = {
         var deffered = Q.defer();
         ProductModel.find({},function(error,products){
             if (!error) {
-                console.log('products:',products);
                 deffered.resolve(products);
             } else {
-                console.log(error);
                 deffered.reject(404);
             }
         });
@@ -39,14 +36,11 @@ var productService = {
     },
     getProductByName: function (requestData){
         var deffered = Q.defer();
-        console.log('product service request data',requestData);
         ProductModel.findOne({'name':requestData},function(error,product){
             if(!error){
-                console.log('product by Name:',product)
                 deffered.resolve(product);
             }
             else{
-                console.log('error');
                 deffered.reject(404);
             }
         });
