@@ -21,13 +21,26 @@ var userService = {
             });
             return deffered.promise;
         },
-    getAllUsers: function(){
+    getAllUsers: function (){
         var deffered = Q.defer();
-        userModel.find({},function(error,users){
-            if(!error){
+        userModel.find({}, function (error, users){
+            if (!error){
                 deffered.resolve(users);
-            }else{
+            } else {
                 deffered.reject(404);
+            }
+        });
+        return deffered.promise;
+    },
+    deleteRecordById: function (requestData){
+        var deffered = Q.defer();
+        userModel.deleteOne({'_id':requestData.id},function(error){
+            if(!error){
+                deffered.resolve(200);
+            }
+            else{
+                console.log('error::',error);
+                deffered.reject(400);
             }
         })
         return deffered.promise;

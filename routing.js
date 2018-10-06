@@ -46,6 +46,13 @@ router.route('/users').get(function(request,response){
         response.status(dto.statusCode).send(dto);
      })
 })
-
+//update the user info by Id:
+router.route('/user/:id').delete(function(request,response){
+    userController.deleteRecordById(request).then(function(dto){
+        response.status(dto.statusCode).send(dto);
+    },function(dto){
+       response.status(dto.statusCode).send(dto);
+    })
+})
 
 module.exports = router;
