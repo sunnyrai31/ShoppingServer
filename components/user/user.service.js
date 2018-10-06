@@ -34,7 +34,7 @@ var userService = {
     },
     deleteRecordById: function (requestData){
         var deffered = Q.defer();
-        userModel.deleteOne({'_id':requestData.id},function(error){
+        userModel.deleteOne({'_id':requestData},function(error){
             if(!error){
                 deffered.resolve(200);
             }

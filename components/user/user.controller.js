@@ -37,7 +37,7 @@ var userController ={
     },
     deleteRecordById : function(requestData){
         var deffered = Q.defer();
-        userService.deleteRecordById(requestData.params).then(
+        userService.deleteRecordById(requestData.params._id).then(
             function(successData){
                 DTO.message = 'DELETE SUCCESSFULL!';
                 DTO.data = null;
